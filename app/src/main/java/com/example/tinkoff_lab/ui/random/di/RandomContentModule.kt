@@ -19,6 +19,6 @@ object RandomContentModule {
         contentRepository: ContentRepository
     ) = ViewModelProvider(
         fragment,
-        ViewModelFactory { ContentVM(contentRepository, ContentFilter.RandomFilter) })
+        ViewModelFactory { ContentVM(contentRepository, ContentFilter.RandomFilter()) })
         .get(ContentVM::class.java)
 }

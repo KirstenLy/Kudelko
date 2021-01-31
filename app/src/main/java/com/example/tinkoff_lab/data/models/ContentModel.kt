@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 /** Model for content entity */
 class ContentModel(
-    @SerializedName("id") val id: Int,
     @SerializedName("description") val description: String,
-    @SerializedName("gifURL") val gifURL: String
+    @SerializedName("gifURL") val gifURL: String?
 )

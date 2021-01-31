@@ -21,6 +21,7 @@ class DataHostFragment : Fragment(R.layout.fragment_data_host) {
         }
     }
 
+    // TODO: Поддержать клик на табы с послеующим переключением фрагментов в VP
     private class SimpleTabsSwitcher(private val tabLayout: TabLayout) :
         ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {

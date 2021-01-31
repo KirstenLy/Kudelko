@@ -13,18 +13,24 @@ import javax.inject.Inject
 @ApplicationScope
 class ContentRepository @Inject constructor(private val networkApi: NetworkApi) {
 
+    private val randomContentCache = mutableListOf<ContentModel>()
+
     /** Get content by filter */
-    // TODO: Потенциально, read должен поддерживать эндпоинты, которые возвращают не только один итем, но и список итемов.
-    // TODO: Когда будет начата поддержка категорий "горячее/последнее", нужно заняться определнием того что read возвращает
     fun read(contentFilter: ContentFilter): Single<ContentModel> {
         return when (contentFilter) {
             is ContentFilter.RandomFilter -> {
+                if (isAvailableReturnRandomContentFromCache(contentFilter.contentIdx)) {
+                    return Single.just(randomContentCache[contentFilter.contentIdx])
+                }
                 networkApi
                     .getRandomContentItem()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .doAfterSuccess(randomContentCache::add)
             }
             else                          -> throw UnsupportedOperationException("Unknown content filter")
         }
     }
+
+    private fun isAvailableReturnRandomContentFromCache(contentIdx: Int) = contentIdx  <= randomContentCache.size - 1
 }

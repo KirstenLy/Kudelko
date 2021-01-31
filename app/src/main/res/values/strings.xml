@@ -6,4 +6,8 @@
     <string name="data_host_tabs_top">Лучшее</string>
     <string name="data_host_tabs_hot">Горячее</string>
     <string name="data_host_tabs_latest">Свежее</string>
+
+    <!-- Random Content Screen -->
+    <string name="random_content_no_description">Без описания</string>
+
 </resources>

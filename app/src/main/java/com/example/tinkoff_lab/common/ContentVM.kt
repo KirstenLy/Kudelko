@@ -16,26 +16,51 @@ class ContentVM(
     private var contentFilter: ContentFilter
 ) : ViewModel() {
 
+    // TODO: Подумать, нужно ли очищать хранилище подписок при next/back операциях, чтобы защититься от фаст клика. Или мб локать кнопки на UI.
     private val disposables = CompositeDisposable()
 
-    // TODO: На данный момент поддержан только случайный контент, лист заведён на будущее
-    private val _contentSingleItem = MutableLiveData<List<ContentModel>>()
+    private val _contentSingleItem = MutableLiveData<ContentModel>()
+    private val _isBackButtonVisible = MutableLiveData<Boolean>()
 
     /** @SelfDocumented */
-    val contentSingleItemLiveData: LiveData<List<ContentModel>>
+    val contentSingleItemLiveData: LiveData<ContentModel>
         get() = _contentSingleItem
 
+    /** @SelfDocumented */
+    val isBackButtonVisibleLiveData: LiveData<Boolean>
+        get() = _isBackButtonVisible
+
     init {
-        list()
+        changeBackButtonVisibilityIfNeeded()
+        getContent()
     }
 
     /**
-     * Get content using filter.
+     * Get next content item
      * */
-    fun list() {
+    fun next() {
+        contentFilter.contentIdx++
+        changeBackButtonVisibilityIfNeeded()
+        getContent()
+    }
+
+    /**
+     * Get previous content item
+     * */
+    fun back() {
+        contentFilter.contentIdx--
+        changeBackButtonVisibilityIfNeeded()
+        getContent()
+    }
+
+    private fun getContent() {
         disposables += contentRepository
             .read(contentFilter)
-            .subscribe({ _contentSingleItem.value = listOf(it) }, Timber::e)
+            .subscribe(_contentSingleItem::setValue, Timber::e)
+    }
+
+    private fun changeBackButtonVisibilityIfNeeded() {
+        _isBackButtonVisible.value = !contentFilter.isFirstItem()
     }
 
     override fun onCleared() {
