@@ -6,7 +6,7 @@ import com.example.tinkoff_lab.R
 import com.example.tinkoff_lab.common.BackAndForwardButtonState
 import com.example.tinkoff_lab.common.ContentVM
 import com.example.tinkoff_lab.data.models.ContentModel
-import com.example.tinkoff_lab.loadWightGlide
+import com.example.tinkoff_lab.loadWithGlide
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_random.*
@@ -45,12 +45,15 @@ class RandomContentFragment : DaggerFragment(R.layout.fragment_random) {
             } else {
                 getString(R.string.random_content_no_description)
             }
-            content_img.loadWightGlide(this@RandomContentFragment, gifURL)
+            content_img.loadWithGlide(this@RandomContentFragment, gifURL)
         }
     }
 
     private fun showError(error: String) {
         Snackbar.make(requireView(), error, Snackbar.LENGTH_LONG).show()
+        if (content_img.drawable == null) {
+            content_img.loadWithGlide(this, null)
+        }
     }
 
     private fun setButtonsState(state: BackAndForwardButtonState) {

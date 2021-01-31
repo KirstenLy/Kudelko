@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.example.tinkoff_lab.R
 import com.example.tinkoff_lab.ui.host.DataHostFragment
 
+private val dataHostTag = DataHostFragment::class.java.canonicalName
+
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,13 +18,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    private fun isDataHostFragmentAlreadyAdded() =
-        supportFragmentManager.findFragmentByTag(DataHostFragment::class.java.canonicalName) != null
+    private fun isDataHostFragmentAlreadyAdded() = supportFragmentManager.findFragmentByTag(dataHostTag) != null
 
-    // TODO: Добавить анимашки + вынести тэг в константы какие - нибудь
     private fun setDataHostFragmentIntoContainer() {
         supportFragmentManager.beginTransaction()
-            .add(R.id.activity_main_host, DataHostFragment(), DataHostFragment::class.java.canonicalName)
+            .add(R.id.activity_main_host, DataHostFragment(), dataHostTag)
             .commit()
     }
 }

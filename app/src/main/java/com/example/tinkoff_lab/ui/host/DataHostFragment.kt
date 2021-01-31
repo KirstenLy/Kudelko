@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.tinkoff_lab.R
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_data_host.*
 
 /**
@@ -17,16 +17,16 @@ class DataHostFragment : Fragment(R.layout.fragment_data_host) {
         with(fragment_host_container) {
             adapter = VPAdapter(this@DataHostFragment)
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            registerOnPageChangeCallback(SimpleTabsSwitcher(fragment_host_tab_layout))
         }
+        initTabLayout()
     }
 
-    // TODO: Поддержать клик на табы с послеующим переключением фрагментов в VP
-    private class SimpleTabsSwitcher(private val tabLayout: TabLayout) :
-        ViewPager2.OnPageChangeCallback() {
-        override fun onPageSelected(position: Int) {
-            val tabByPosition = tabLayout.getTabAt(position)
-            tabLayout.selectTab(tabByPosition)
-        }
+    private fun initTabLayout(){
+        val tabTitles = resources.getStringArray(R.array.data_host_tabs)
+
+        TabLayoutMediator(
+            fragment_host_tab_layout,
+            fragment_host_container
+        ) { tab, position -> tab.text = tabTitles[position] }.attach()
     }
 }

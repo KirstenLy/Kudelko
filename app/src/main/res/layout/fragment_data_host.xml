@@ -11,23 +11,19 @@
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_host_tabs_random"/>
+            android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_host_tabs_top"/>
+            android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_host_tabs_hot"/>
+            android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_host_tabs_latest"/>
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.tabs.TabLayout>
 

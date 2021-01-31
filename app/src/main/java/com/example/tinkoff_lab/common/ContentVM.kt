@@ -21,13 +21,12 @@ class ContentVM(
     private val disposables = CompositeDisposable()
 
     private val _contentSingleItem = MutableLiveData<ContentModel>()
-    private val _error = SingleLiveEvent<String>()
     private val _backAndForwardBtnState = MutableLiveData(BackAndForwardButtonState())
+    private val _error = SingleLiveEvent<String>()
 
     /** @SelfDocumented */
     val contentSingleItemLiveData: LiveData<ContentModel>
         get() = _contentSingleItem
-
 
     /** @SelfDocumented */
     val errorEvent: LiveData<String>
