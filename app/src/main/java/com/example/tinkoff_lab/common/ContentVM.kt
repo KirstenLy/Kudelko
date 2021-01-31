@@ -8,8 +8,9 @@ import com.example.tinkoff_lab.data.sources.repository.ContentFilter
 import com.example.tinkoff_lab.data.sources.repository.ContentRepository
 import com.example.tinkoff_lab.other.plusAssign
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import timber.log.Timber
 
-/** VM with advices data operations */
+/** Common VM for get and store content */
 class ContentVM(
     private val contentRepository: ContentRepository,
     private var contentFilter: ContentFilter
@@ -17,6 +18,7 @@ class ContentVM(
 
     private val disposables = CompositeDisposable()
 
+    // TODO: На данный момент поддержан только случайный контент, лист заведён на будущее
     private val _contentSingleItem = MutableLiveData<List<ContentModel>>()
 
     /** @SelfDocumented */
@@ -33,7 +35,7 @@ class ContentVM(
     fun list() {
         disposables += contentRepository
             .read(contentFilter)
-            .subscribe()
+            .subscribe({ _contentSingleItem.value = listOf(it) }, Timber::e)
     }
 
     override fun onCleared() {

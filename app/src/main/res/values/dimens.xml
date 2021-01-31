@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TODO: Значения взяты на глазок: нужно либо уточнить их, либо избавиться от них -->
+    <dimen name="content_width">500dp</dimen>
+    <dimen name="content_height">500dp</dimen>
+</resources>

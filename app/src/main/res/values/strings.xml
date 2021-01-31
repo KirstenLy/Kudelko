@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Tinkoff_Lab</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- DataHost Screen --> <!-- TODO: Поддержать английский язык, если будет время -->
+    <string name="data_host_tabs_random">Случайное</string>
+    <string name="data_host_tabs_top">Лучшее</string>
+    <string name="data_host_tabs_hot">Горячее</string>
+    <string name="data_host_tabs_latest">Свежее</string>
 </resources>
