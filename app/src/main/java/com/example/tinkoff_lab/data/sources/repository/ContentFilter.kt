@@ -5,5 +5,5 @@ sealed class ContentFilter(var contentIdx: Int) {
     class HotFilter(contentIdx: Int = 0) : ContentFilter(contentIdx)
 
     /** @SelfDocumented */
-    fun isFirstItem() = contentIdx == 0
+    fun isFirstItem() = contentIdx == 0 || contentIdx == 1
 }

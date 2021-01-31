@@ -3,7 +3,6 @@ package com.example.tinkoff_lab.application.di
 import android.content.Context
 import com.example.tinkoff_lab.BuildConfig
 import com.example.tinkoff_lab.application.App
-import com.example.tinkoff_lab.other.ResourceProvider
 import com.example.tinkoff_lab.data.sources.network.NetworkApi
 import dagger.Module
 import dagger.Provides
@@ -19,11 +18,6 @@ object AppModule {
     @ApplicationScope
     @Provides
     fun provideApi(): NetworkApi = createRetrofit().create(NetworkApi::class.java)
-
-    /** Provide resource provider for VM, repositories, e.t.c */
-    @ApplicationScope
-    @Provides
-    fun provideResourceProvider(appContext: Context) = ResourceProvider(appContext)
 
     /** Provide Application context */
     @ApplicationScope

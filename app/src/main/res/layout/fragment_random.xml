@@ -14,34 +14,30 @@
         <!-- TODO: Поддержать размер изображения в зависимости от значений, пришедших с сервера. Постараться избежать дёрганий при изменении размеров. -->
         <ImageView
             android:id="@+id/content_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/content_width"
+            android:layout_height="@dimen/content_width"
             app:layout_constraintBottom_toTopOf="@+id/content_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        android:layout_width="@dimen/content_width"-->
-<!--        android:layout_height="@dimen/content_width"-->
-
         <TextView
             android:id="@+id/content_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toTopOf="@+id/content_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/content_img"
+            android:padding="@dimen/padding_8"
             tools:text="PepeLaugh" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/content_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_8"
             android:rotation="180"
             app:backgroundTint="@android:color/white"
@@ -57,7 +53,6 @@
             android:id="@+id/content_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_8"
             app:backgroundTint="@android:color/white"
             app:fabSize="normal"

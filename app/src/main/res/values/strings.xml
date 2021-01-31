@@ -1,7 +1,8 @@
+<!-- TODO: Поддержать английский язык, если будет время -->
 <resources>
     <string name="app_name">Tinkoff_Lab</string>
 
-    <!-- DataHost Screen --> <!-- TODO: Поддержать английский язык, если будет время -->
+    <!-- DataHost Screen -->
     <string name="data_host_tabs_random">Случайное</string>
     <string name="data_host_tabs_top">Лучшее</string>
     <string name="data_host_tabs_hot">Горячее</string>
@@ -10,4 +11,8 @@
     <!-- Random Content Screen -->
     <string name="random_content_no_description">Без описания</string>
 
+    <!-- Errors -->
+    <string name="error_no_internet">Отсутствует соединение с интернетом</string>
+    <string name="error_timeout">Превышено время, отведённое для соединения с сервером. Пожалуйста, попробуйте ещё раз или чуть позже</string>
+    <string name="error_unknown">Неизвестная ошибка</string>
 </resources>

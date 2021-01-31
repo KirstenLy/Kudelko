@@ -2,12 +2,12 @@ package com.example.tinkoff_lab.ui.random
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.example.tinkoff_lab.R
+import com.example.tinkoff_lab.common.BackAndForwardButtonState
 import com.example.tinkoff_lab.common.ContentVM
 import com.example.tinkoff_lab.data.models.ContentModel
-import com.example.tinkoff_lab.other.loadWightGlide
+import com.example.tinkoff_lab.loadWightGlide
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_random.*
 import javax.inject.Inject
@@ -34,7 +34,8 @@ class RandomContentFragment : DaggerFragment(R.layout.fragment_random) {
 
     private fun initObservers() {
         contentVM.contentSingleItemLiveData.observe(viewLifecycleOwner, ::setContent)
-        contentVM.isBackButtonVisibleLiveData.observe(viewLifecycleOwner, { isVisible -> content_back.isVisible = isVisible})
+        contentVM.errorEvent.observe(viewLifecycleOwner, ::showError)
+        contentVM.backAndForwardBtnStateEvent.observe(viewLifecycleOwner, ::setButtonsState)
     }
 
     private fun setContent(content: ContentModel) {
@@ -44,11 +45,16 @@ class RandomContentFragment : DaggerFragment(R.layout.fragment_random) {
             } else {
                 getString(R.string.random_content_no_description)
             }
-                content_img.loadWightGlide(this@RandomContentFragment, gifURL)
+            content_img.loadWightGlide(this@RandomContentFragment, gifURL)
         }
     }
 
-    private fun showEmptyImageError() {
-        content_img.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_error_red))
+    private fun showError(error: String) {
+        Snackbar.make(requireView(), error, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun setButtonsState(state: BackAndForwardButtonState) {
+        content_back.isEnabled = state.isBackButtonEnabled
+        content_next.isEnabled = state.isForwardButtonEnabled
     }
 }

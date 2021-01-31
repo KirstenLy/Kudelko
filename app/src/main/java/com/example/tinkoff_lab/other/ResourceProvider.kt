@@ -6,11 +6,14 @@ import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import android.util.DisplayMetrics
+import com.example.tinkoff_lab.application.di.ApplicationScope
+import javax.inject.Inject
 
 /**
  * Класс-обертка над ApplicationContext для предоставления ресурсов по id
  */
-open class ResourceProvider(context: Context) {
+@ApplicationScope
+class ResourceProvider @Inject constructor(context: Context) {
 
     private val mContext = context.applicationContext
 
