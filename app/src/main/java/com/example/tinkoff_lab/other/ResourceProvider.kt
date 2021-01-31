@@ -1,4 +1,4 @@
-package com.example.tinkoff_lab.common
+package com.example.tinkoff_lab.other
 
 import android.content.Context
 import android.content.res.TypedArray

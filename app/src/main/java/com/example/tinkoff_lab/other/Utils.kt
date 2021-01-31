@@ -1,4 +1,4 @@
-package com.example.tinkoff_lab
+package com.example.tinkoff_lab.other
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

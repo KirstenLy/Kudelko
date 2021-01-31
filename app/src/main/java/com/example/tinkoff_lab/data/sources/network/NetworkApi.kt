@@ -1,11 +1,12 @@
 package com.example.tinkoff_lab.data.sources.network
 
-import com.example.tinkoff_lab.common.BaseResponse
+import com.example.tinkoff_lab.data.models.ContentModel
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.*
 
 /** API for network requests */
 interface NetworkApi {
 
-    @GET("advice/get_all.php")
-    suspend fun getAllAdvices(): BaseResponse<Unit>
+    @GET("random?json=true")
+    fun getRandomContentItem(): Single<ContentModel>
 }
