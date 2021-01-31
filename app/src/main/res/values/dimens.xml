@@ -70,6 +70,6 @@
     <dimen name="fab_size_64">64dp</dimen>
 
     <!-- TODO: Значения взяты на глазок: нужно либо уточнить их, либо избавиться от них -->
-    <dimen name="content_width">250dp</dimen>
-    <dimen name="content_height">250dp</dimen>
+    <dimen name="content_width">300dp</dimen>
+    <dimen name="content_height">300dp</dimen>
 </resources>

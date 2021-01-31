@@ -10,10 +10,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class FragmentsAndActivityModule {
 
-    //    @ContributesAndroidInjector(modules = [MainActivityModule::class])
-//    abstract fun contributeActivityAndroidInjector(): MainActivity
-//
-
     @ContributesAndroidInjector(modules = [RandomContentModule::class])
     abstract fun contributeRandomContentFragmentAndroidInjector(): RandomContentFragment
 
